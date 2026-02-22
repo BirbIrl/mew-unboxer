@@ -5,7 +5,7 @@ local paths = require("lib.paths")
 local abilityID = 1346
 local passivesID = 515
 
-local frameDataDumpCommand = "ffdec  -dumpSWF " .. paths.data.ability
+local frameDataDumpCommand = "ffdec  -dumpSWF " .. paths.assets.swf.ability
 
 local module = {}
 
@@ -26,8 +26,8 @@ local function extractData(dataPath, typeId)
 end
 
 function module.extract()
-	extractData(paths.data.ability, abilityID)
-	extractData(paths.data.ability, passivesID)
+	extractData(paths.assets.swf.ability, abilityID)
+	extractData(paths.assets.swf.ability, passivesID)
 	---@type table<string, integer>
 	local passiveIDs = {
 
@@ -63,8 +63,8 @@ function module.extract()
 	dumped:close()
 
 	-- cleanup
-	cleanUp(passiveIDs, paths.unsorted.passive, paths.final.passive)
-	cleanUp(abilityIDs, paths.unsorted.ability, paths.final.ability)
+	cleanUp(passiveIDs, paths.assets.unsorted.passive, paths.assets.final.passive)
+	cleanUp(abilityIDs, paths.assets.unsorted.ability, paths.assets.final.ability)
 	return passiveIDs, abilityIDs
 end
 

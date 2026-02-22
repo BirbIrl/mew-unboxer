@@ -1,4 +1,8 @@
--- eggon - birbirl's terrible half assed gon file interpretor. licensed under GPL3.0
+-- eggon - birbirl's half-assed gon file parser
+-- a part of me wanted to call this library "goon" because lua stands for "moon" - thank me i didn't do that. egg-on will do.
+-- the lion doesn't concern himself with the 9 goto's
+--
+--breaks with: tooltip_values ["max((X-1)*2, 0)"]
 local module = {}
 
 ---@enum modes
@@ -18,7 +22,7 @@ local function parseChunk(chunk)
 	elseif chunk == "false" then
 		return false
 	end
-	return { type = "reference", id = chunk }
+	return chunk
 end
 
 
@@ -52,7 +56,11 @@ function module.parse(contents)
 		if mode == modes.declare and chunk and chunk:sub(1, 1) == '"' then
 			if char == '"' then
 				tree[#tree][definition] = chunk:sub(2, -1)
-				mode = modes.define
+				if tableTypes[tree[#tree]] == "object" then
+					mode = modes.define
+				else
+					mode = modes.declare
+				end
 				chunk = nil
 				goto skip
 			else
