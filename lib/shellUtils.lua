@@ -41,4 +41,27 @@ function module.stat(path)
 	end
 end
 
+---@param path string
+---@return string
+function module.read(path)
+	local file = assert(io.open(path, "r"), "Couldn't open file in path: " .. path)
+	local contents = file:read("a")
+	file:close()
+	return contents
+end
+
+---@param path string
+---@param contents string
+function module.write(path, contents)
+	local file = assert(io.open(path, "w"), "Couldn't open file in path: " .. path)
+	file:write(contents)
+	file:close()
+end
+
+---@param from string
+---@param to string
+function module.cp(from, to)
+	os.execute("cp " .. from .. " " .. to)
+end
+
 return module

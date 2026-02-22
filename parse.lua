@@ -1,6 +1,3 @@
--- ffdec -selectid 515 -export sprite unpacked  mewgenics-data/swfs/ability_icons.swf
--- ffdec  -dumpSWF mewgenics-data/swfs/ability_icons.swf
-
 local serpent = require("lib.serpent")
 local eggon = require("lib.eggon")
 local iconExtractor = require("scripts.iconExtractor")
@@ -10,17 +7,19 @@ local dataLoader = require("scripts.dataLoader")
 local langLoader = require("scripts.langLoader")
 local json = require("lib.json")
 local paths = require("lib.paths")
+local shellMaker = require("scripts.shellMaker")
 
-if sh.stat("unpacked") then
+if sh.stat(paths.mewbox) then
 	if ... == "--force" then
-		sh.rm("unpacked", true)
+		sh.rm(paths.mewbox, true)
 	else
 		error(
-			"Please get rid of the existing 'unpacked' folder first, or run this with --force to delete it automatically")
+			"Please get rid of the existing " ..
+			paths.mewbox .. " folder first, or run this with --force to delete it automatically")
 	end
 end
 
-local passiveIDs, spellIDs = iconExtractor.extract()
+iconExtractor.extractAbilities()
 svgAdjuster.adjustPassives()
 svgAdjuster.adjustSkills()
 
@@ -53,13 +52,18 @@ passivesFile:write(json.encode(passives))
 passivesFile:close()
 
 
+iconExtractor.extractFontIcons()
+
+
+shellMaker.makeShells()
+
 
 --[[
 local mewbox = {}
 mewbox.types = {}
 
 
------@enum mewbox.class
+--@enum mewbox.class
 mewbox.types.class = {
 	Colorless = "Collarless",
 	Fighter = "Fighter",
