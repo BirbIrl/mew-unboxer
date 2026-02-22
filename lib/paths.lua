@@ -27,18 +27,21 @@ paths.assets = {
 		dex = paths.mewbox .. "/DefineSprite_" .. ids.dex .. "_FontIcon_dex",
 		con = paths.mewbox .. "/DefineSprite_" .. ids.con .. "_FontIcon_con",
 		cha = paths.mewbox .. "/DefineSprite_" .. ids.cha .. "_FontIcon_cha",
-		shells = "./static/shells"
+		shells = "./static/shells",
+		fonts = paths.mewbox .. "TODO",
 	},
 	final = {
 		ability = paths.mewbox .. "/abilityIcons",
 		passive = paths.mewbox .. "/passiveIcons",
 		collars = paths.mewbox .. "/collarIcons",
 		fontIcons = paths.mewbox .. "/fontIcons",
-		shells = paths.mewbox .. "/shells"
+		shells = paths.mewbox .. "/shells",
+		fonts = paths.mewbox .. "/fonts",
 	},
 	swf = {
 		ability = "./mewgenics-data/swfs/ability_icons.swf",
 		ui = "./mewgenics-data/swfs/ui.swf",
+		fonts = "./mewgenics-data/swfs/fonts.swf",
 	}
 }
 paths.data = {

@@ -8,6 +8,7 @@ local langLoader = require("scripts.langLoader")
 local json = require("lib.json")
 local paths = require("lib.paths")
 local shellMaker = require("scripts.shellMaker")
+local fontExtractor = require("scripts.fontExtractor")
 
 if sh.stat(paths.mewbox) then
 	if ... == "--force" then
@@ -57,6 +58,7 @@ iconExtractor.extractFontIcons()
 
 shellMaker.makeShells()
 
+fontExtractor.extractFonts()
 
 --[[
 local mewbox = {}
