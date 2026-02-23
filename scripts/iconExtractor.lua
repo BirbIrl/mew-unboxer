@@ -15,6 +15,7 @@ local ids = {
 		dex = 2713,
 		con = 2716,
 		cha = 2719,
+		lck = 3896,
 	}
 
 }
@@ -29,6 +30,9 @@ local module = {}
 local function cleanUp(IDs, from, to)
 	if sh.stat(from) == "directory" then
 		for name, id in pairs(IDs) do
+			if name == "BurningFists" then -- TODO: REMOVE WHEN TYLER FIXES THIS SILLY RENAME BUG
+				name = "FlamingFists"
+			end
 			sh.mkdir(to)
 			sh.mv(from .. "/" .. id .. ".svg", to .. "/" .. name .. ".svg")
 		end
@@ -114,6 +118,7 @@ function module.extractFontIcons()
 	cleanUp({ dex = 1 }, paths.assets.unsorted.dex, paths.assets.final.fontIcons)
 	cleanUp({ con = 1 }, paths.assets.unsorted.con, paths.assets.final.fontIcons)
 	cleanUp({ cha = 1 }, paths.assets.unsorted.cha, paths.assets.final.fontIcons)
+	cleanUp({ lck = 1 }, paths.assets.unsorted.lck, paths.assets.final.fontIcons)
 	cleanUp({ DivineShield = 1 }, paths.assets.unsorted.divineShield, paths.assets.final.fontIcons)
 	cleanUp({ Shield = 1 }, paths.assets.unsorted.shield, paths.assets.final.fontIcons)
 end

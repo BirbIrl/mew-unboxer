@@ -10,6 +10,7 @@ local ids = {
 	dex = 2713,
 	con = 2716,
 	cha = 2719,
+	lck = 3896,
 
 }
 local paths = {}
@@ -27,6 +28,7 @@ paths.assets = {
 		dex = paths.mewbox .. "/DefineSprite_" .. ids.dex .. "_FontIcon_dex",
 		con = paths.mewbox .. "/DefineSprite_" .. ids.con .. "_FontIcon_con",
 		cha = paths.mewbox .. "/DefineSprite_" .. ids.cha .. "_FontIcon_cha",
+		lck = paths.mewbox .. "/DefineSprite_" .. ids.lck .. "_FontIcon_lck",
 		shells = "./static/shells",
 		fonts = paths.mewbox .. "TODO",
 	},
