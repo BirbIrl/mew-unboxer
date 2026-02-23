@@ -1,5 +1,5 @@
 # Mewgenics unpacker for mewbox
-This script translate's some of mewgenic's `gon`, `swf` and `csv` data into `svg` and `json`'s for use on the web
+This script translates some of mewgenic's `gon`, `swf` and `csv` data into `svg` and `json`'s for use on the web
 
 
 ### Required dependencies: 
