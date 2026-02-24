@@ -2,15 +2,22 @@ local ids = {
 	ability = 1346,
 	passives = 515,
 	collars = 753,
-	divineShield = 2693,
-	shield = 2695,
-	str = 2704,
-	spd = 2707,
-	int = 2710,
-	dex = 2713,
-	con = 2716,
-	cha = 2719,
-	lck = 3896,
+	fontIcons = {
+		stimulation = 2685,
+		evolution = 2663,
+		health = 2665,
+		comfort = 2687,
+		appeal = 2689,
+		divineshield = 2693,
+		shield = 2695,
+		str = 2704,
+		spd = 2707,
+		int = 2710,
+		dex = 2713,
+		con = 2716,
+		cha = 2719,
+		lck = 3896,
+	}
 
 }
 local paths = {}
@@ -20,15 +27,6 @@ paths.assets = {
 		ability = paths.mewbox .. "/DefineSprite_" .. ids.ability .. "_AbilityIcon",
 		passive = paths.mewbox .. "/DefineSprite_" .. ids.passives .. "_PassiveIcon",
 		collars = paths.mewbox .. "/DefineSprite_" .. ids.collars .. "_ClassCollar",
-		divineShield = paths.mewbox .. "/DefineSprite_" .. ids.divineShield .. "_RawFontIcon_divineshield",
-		shield = paths.mewbox .. "/DefineSprite_" .. ids.shield .. "_RawFontIcon_shield",
-		str = paths.mewbox .. "/DefineSprite_" .. ids.str .. "_FontIcon_str",
-		spd = paths.mewbox .. "/DefineSprite_" .. ids.spd .. "_FontIcon_spd",
-		int = paths.mewbox .. "/DefineSprite_" .. ids.int .. "_FontIcon_int",
-		dex = paths.mewbox .. "/DefineSprite_" .. ids.dex .. "_FontIcon_dex",
-		con = paths.mewbox .. "/DefineSprite_" .. ids.con .. "_FontIcon_con",
-		cha = paths.mewbox .. "/DefineSprite_" .. ids.cha .. "_FontIcon_cha",
-		lck = paths.mewbox .. "/DefineSprite_" .. ids.lck .. "_FontIcon_lck",
 		shells = "./static/shells",
 		fonts = paths.mewbox .. "TODO",
 	},
@@ -129,4 +127,16 @@ paths.data = {
 		}
 	}
 }
+
+
+for key, id in pairs(ids.fontIcons) do
+	local path = paths.mewbox .. "/DefineSprite_" .. id .. "_FontIcon_" .. key
+	if key == "divineshield" or key == "shield" then
+		path = path:gsub("FontIcon", "RawFontIcon")
+	end
+
+	paths.assets.unsorted[key] = path
+end
+paths.ids = ids
+
 return paths

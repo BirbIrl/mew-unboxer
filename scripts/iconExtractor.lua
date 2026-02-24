@@ -1,24 +1,6 @@
 local sh = require("lib.shellUtils")
 local paths = require("lib.paths")
-
-
-local ids = {
-	ability = 1346,
-	passives = 515,
-	fontIcons = {
-		collars = 753,
-		divineShield = 2693,
-		shield = 2695,
-		str = 2704,
-		spd = 2707,
-		int = 2710,
-		dex = 2713,
-		con = 2716,
-		cha = 2719,
-		lck = 3896,
-	}
-
-}
+local ids = paths.ids
 
 local frameDataDumpCommand = "ffdec  -dumpSWF " .. paths.assets.swf.ability
 
@@ -108,19 +90,13 @@ local classIDs = {
 }
 
 function module.extractFontIcons()
-	for _, id in pairs(ids.fontIcons) do
-		extractData(paths.assets.swf.ui, id)
-	end
+	extractData(paths.assets.swf.ui, ids.collars)
 	cleanUp(classIDs, paths.assets.unsorted.collars, paths.assets.final.collars)
-	cleanUp({ str = 1 }, paths.assets.unsorted.str, paths.assets.final.fontIcons)
-	cleanUp({ spd = 1 }, paths.assets.unsorted.spd, paths.assets.final.fontIcons)
-	cleanUp({ int = 1 }, paths.assets.unsorted.int, paths.assets.final.fontIcons)
-	cleanUp({ dex = 1 }, paths.assets.unsorted.dex, paths.assets.final.fontIcons)
-	cleanUp({ con = 1 }, paths.assets.unsorted.con, paths.assets.final.fontIcons)
-	cleanUp({ cha = 1 }, paths.assets.unsorted.cha, paths.assets.final.fontIcons)
-	cleanUp({ lck = 1 }, paths.assets.unsorted.lck, paths.assets.final.fontIcons)
-	cleanUp({ DivineShield = 1 }, paths.assets.unsorted.divineShield, paths.assets.final.fontIcons)
-	cleanUp({ Shield = 1 }, paths.assets.unsorted.shield, paths.assets.final.fontIcons)
+
+	for key, id in pairs(ids.fontIcons) do
+		extractData(paths.assets.swf.ui, id)
+		cleanUp({ [key] = 1 }, paths.assets.unsorted[key], paths.assets.final.fontIcons)
+	end
 end
 
 return module

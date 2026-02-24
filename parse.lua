@@ -10,6 +10,27 @@ local paths = require("lib.paths")
 local shellMaker = require("scripts.shellMaker")
 local fontExtractor = require("scripts.fontExtractor")
 
+
+local function assignText(ability, text)
+	if ability.desc then
+		ability.desc = text[ability.desc]
+	end
+	if ability.name then
+		ability.name = text[ability.name]
+	end
+	local i = 1
+	while ability[tostring(i)] do
+		local key = tostring(i)
+		if ability[key].desc then
+			ability[key].desc = text[ability[key].desc]
+		end
+		if ability[key].name then
+			ability[key].name = text[ability[key].name]
+		end
+		i = i + 1
+	end
+end
+
 if sh.stat(paths.mewbox) then
 	if ... == "--force" then
 		sh.rm(paths.mewbox, true)
@@ -28,19 +49,13 @@ local passives, abilities = dataLoader.load()
 
 local text = langLoader.load()
 
+
 for _, passive in pairs(passives) do
-	passive.desc = text[passive.desc]
-	passive.name = text[passive.name]
-	if passive["2"] and passive["2"].desc then
-		passive["2"].desc = text[passive["2"].desc]
-	end
+	assignText(passive, text)
 end
 
 for _, ability in pairs(abilities) do
-	if ability.meta then
-		ability.meta.desc = text[ability.meta.desc]
-		ability.meta.name = text[ability.meta.name]
-	end
+	assignText(ability, text)
 end
 
 
@@ -60,13 +75,10 @@ shellMaker.makeShells()
 
 fontExtractor.extractFonts()
 
---[[
 local mewbox = {}
-mewbox.types = {}
 
-
---@enum mewbox.class
-mewbox.types.class = {
+--@enum mewbox.
+mewbox.collar = {
 	Colorless = "Collarless",
 	Fighter = "Fighter",
 	Hunter = "Hunter",
@@ -84,6 +96,9 @@ mewbox.types.class = {
 	Disorder = "Disorder",
 }
 
+sh.write(paths.mewbox .. "/mewbox.json", json.encode(mewbox))
+
+--[[
 ---@enum mewbox.element
 mewbox.types.element = {
 	Water = "Water",
