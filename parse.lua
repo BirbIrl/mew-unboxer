@@ -78,7 +78,7 @@ fontExtractor.extractFonts()
 local mewgenie = {}
 
 --@enum mewgenie.
-mewgenie.collar = {
+mewgenie.collars = {
 	Colorless = "Collarless",
 	Fighter = "Fighter",
 	Hunter = "Hunter",
@@ -94,6 +94,40 @@ mewgenie.collar = {
 	Monk = "Monk",
 	Jester = "Jester",
 	Disorder = "Disorder",
+}
+
+
+mewgenie.stats = {
+	dex = "Dexterity",
+	con = "Constitution",
+	int = "Intelligence",
+	cha = "Charisma",
+	spd = "Speed",
+	lck = "Luck",
+}
+
+mewgenie.blacklist = {
+	passives = {
+		"EyeCatchin",
+		"DeathChill",
+		"LongStrider",
+		"VoidSoul",
+		"Deathless",
+		"STARTER_PLACEHOLDER_Butcher",
+		"STARTER_PLACEHOLDER_Colorless",
+		"STARTER_PLACEHOLDER_Druid",
+		"STARTER_PLACEHOLDER_Fighter",
+		"STARTER_PLACEHOLDER_Hunter",
+		"STARTER_PLACEHOLDER_Jester",
+		"STARTER_PLACEHOLDER_Mage",
+		"STARTER_PLACEHOLDER_Medic",
+		"STARTER_PLACEHOLDER_Monk",
+		"STARTER_PLACEHOLDER_Necromancer",
+		"STARTER_PLACEHOLDER_Psychic",
+		"STARTER_PLACEHOLDER_Tank",
+		"STARTER_PLACEHOLDER_Thief",
+		"STARTER_PLACEHOLDER_Tinkerer",
+	}
 }
 
 mewgenie.collarOrder = {
