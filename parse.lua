@@ -96,6 +96,10 @@ mewbox.collar = {
 	Disorder = "Disorder",
 }
 
+mewbox.collarOrder {
+	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Healer", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid", "Psychic", "Monk", "Jester", "Disorder"
+}
+
 sh.write(paths.mewbox .. "/mewbox.json", json.encode(mewbox))
 
 --[[
