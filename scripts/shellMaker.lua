@@ -47,7 +47,7 @@ local passiveColors = {
 	Tinkerer = "#B5EADC",
 	Butcher = "#AC4457",
 	Druid = "#5B4237",
-	Psychic = "#B2A9BC",
+	Psychic = "#684E78",
 	Monk = "#787878",
 	Jester = "#dd54cb",
 }
