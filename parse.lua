@@ -31,13 +31,13 @@ local function assignText(ability, text)
 	end
 end
 
-if sh.stat(paths.mewbox) then
+if sh.stat(paths.mewgenie) then
 	if ... == "--force" then
-		sh.rm(paths.mewbox, true)
+		sh.rm(paths.mewgenie, true)
 	else
 		error(
 			"Please get rid of the existing " ..
-			paths.mewbox .. " folder first, or run this with --force to delete it automatically")
+			paths.mewgenie .. " folder first, or run this with --force to delete it automatically")
 	end
 end
 
@@ -75,10 +75,10 @@ shellMaker.makeShells()
 
 fontExtractor.extractFonts()
 
-local mewbox = {}
+local mewgenie = {}
 
---@enum mewbox.
-mewbox.collar = {
+--@enum mewgenie.
+mewgenie.collar = {
 	Colorless = "Collarless",
 	Fighter = "Fighter",
 	Hunter = "Hunter",
@@ -96,23 +96,24 @@ mewbox.collar = {
 	Disorder = "Disorder",
 }
 
-mewbox.collarOrder {
-	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Healer", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid", "Psychic", "Monk", "Jester", "Disorder"
+mewgenie.collarOrder = {
+	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Healer", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid",
+	"Psychic", "Monk", "Jester", "Disorder"
 }
 
-sh.write(paths.mewbox .. "/mewbox.json", json.encode(mewbox))
+sh.write(paths.mewgenie .. "/mewgenie.json", json.encode(mewgenie))
 
 --[[
----@enum mewbox.element
-mewbox.types.element = {
+---@enum mewgenie.element
+mewgenie.types.element = {
 	Water = "Water",
 	Fire = "Fire",
 	Explosion = "Explosion",
 	Ice = "Ice",
 }
 
----@enum mewbox.effect
-mewbox.types.effect = {
+---@enum mewgenie.effect
+mewgenie.types.effect = {
 	Stun = "Stun",
 	Burn = "Burn",
 	Freeze = "Freeze",
@@ -120,42 +121,42 @@ mewbox.types.effect = {
 	IgnoreSelf = "Ignore Self",
 }
 
----@enum mewbox.target_mode
-mewbox.types.target_mode = {
+---@enum mewgenie.target_mode
+mewgenie.types.target_mode = {
 	direction = "Cardinal direction",
 }
 
----@enum mewbox.aoe_mode
-mewbox.types.aoe_mode = {
+---@enum mewgenie.aoe_mode
+mewgenie.types.aoe_mode = {
 	line = "Line"
 }
 
----@enum mewbox.aoe_restriction
-mewbox.types.aoe_restriction = {
+---@enum mewgenie.aoe_restriction
+mewgenie.types.aoe_restriction = {
 	must_have_line_of_sight_unpurgable = "Must have line of sight (unpurgable)",
 	none = "None",
 }
 
----@enum mewbox.knockback_mode
-mewbox.types.knockback_mode = {
+---@enum mewgenie.knockback_mode
+mewgenie.types.knockback_mode = {
 	character_to_tile = "Character to tile"
 }
 
----@enum mewbox.restriction
-mewbox.types.knobckback_mode = {
+---@enum mewgenie.restriction
+mewgenie.types.knobckback_mode = {
 	must_be_moveable = "Must be movable",
 	must_have_tag = "Must have assigned tag",
 	must_move = "Must move",
 }
 
----@enum mewbox.tags
-mewbox.types.knobckback_mode = {
+---@enum mewgenie.tags
+mewgenie.types.knobckback_mode = {
 	food = "Food"
 }
 
 
----@enum mewbox.templates
-mewbox.types.templates = {
+---@enum mewgenie.templates
+mewgenie.types.templates = {
 	melee_attack = "Melee attack",
 	lobbed_attack = "Lobbed attack",
 	ranged_attack = "Ranged attack",
@@ -165,7 +166,7 @@ mewbox.types.templates = {
 	spell = "Spell",
 }
 
----@class mewbox.description
+---@class mewgenie.description
 ---@field en string
 ---@field sp string
 ---@field fr string
@@ -174,19 +175,19 @@ mewbox.types.templates = {
 ---@field pt-br string
 
 
----@class mewbox.passive
----@field class mewbox.class
----@field desc mewbox.description
----@field name mewbox.description
+---@class mewgenie.passive
+---@field class mewgenie.class
+---@field desc mewgenie.description
+---@field name mewgenie.description
 
 
----@class mewbox.abilities
----@field template mewbox.templates
----@field meta {name: mewbox.description, desc: mewbox.description, class: mewbox.class}
+---@class mewgenie.abilities
+---@field template mewgenie.templates
+---@field meta {name: mewgenie.description, desc: mewgenie.description, class: mewgenie.class}
 ---@field cost {mana: integer, infcantrip?: boolean}
----@field target {target_mode?: mewbox.target_mode, restrictions: mewbox.restrictions, max_aoe?: integer, max_range?: integer, aoe_considers_character_size?: boolean, aoe_excludes_self?: boolean, knockback_mode?: mewbox.knockback_mode}
----@field damage_instance? {damage?: integer, knockback?: integer, elements?: mewbox.element[],  effects?: table<mewbox.effect,any>}
----@field temporary_effects table<mewbox.effect,any>
+---@field target {target_mode?: mewgenie.target_mode, restrictions: mewgenie.restrictions, max_aoe?: integer, max_range?: integer, aoe_considers_character_size?: boolean, aoe_excludes_self?: boolean, knockback_mode?: mewgenie.knockback_mode}
+---@field damage_instance? {damage?: integer, knockback?: integer, elements?: mewgenie.element[],  effects?: table<mewgenie.effect,any>}
+---@field temporary_effects table<mewgenie.effect,any>
 
 
 

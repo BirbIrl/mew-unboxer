@@ -1,4 +1,4 @@
-# Mewgenics unpacker for mewbox
+# Mewgenics unpacker for mewgenie
 This script translates some of mewgenic's `gon`, `swf` and `csv` data into `svg` and `json`'s for use on the web
 
 
@@ -12,6 +12,6 @@ This script translates some of mewgenic's `gon`, `swf` and `csv` data into `svg`
 
 ---
 
-note that this script is only for usage in [mewbox](https://github.com/birbirl/mewbox). Data is often skipped/dropped/transformed as needed.
+note that this script is only for usage in [mewgenie](https://github.com/birbirl/mewgenie). Data is often skipped/dropped/transformed as needed.
 
 for now shells are generated half-manually from the assets in `static`. this is due to them needing to be tweaked to allow stacking and recoloring

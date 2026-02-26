@@ -21,22 +21,22 @@ local ids = {
 
 }
 local paths = {}
-paths.mewbox = "./mewbox-data"
+paths.mewgenie = "./mewgenie-data"
 paths.assets = {
 	unsorted = {
-		ability = paths.mewbox .. "/DefineSprite_" .. ids.ability .. "_AbilityIcon",
-		passive = paths.mewbox .. "/DefineSprite_" .. ids.passives .. "_PassiveIcon",
-		collars = paths.mewbox .. "/DefineSprite_" .. ids.collars .. "_ClassCollar",
+		ability = paths.mewgenie .. "/DefineSprite_" .. ids.ability .. "_AbilityIcon",
+		passive = paths.mewgenie .. "/DefineSprite_" .. ids.passives .. "_PassiveIcon",
+		collars = paths.mewgenie .. "/DefineSprite_" .. ids.collars .. "_ClassCollar",
 		shells = "./static/shells",
-		fonts = paths.mewbox .. "TODO",
+		fonts = paths.mewgenie .. "TODO",
 	},
 	final = {
-		ability = paths.mewbox .. "/abilityIcons",
-		passive = paths.mewbox .. "/passiveIcons",
-		collars = paths.mewbox .. "/collarIcons",
-		fontIcons = paths.mewbox .. "/fontIcons",
-		shells = paths.mewbox .. "/shells",
-		fonts = paths.mewbox .. "/fonts",
+		ability = paths.mewgenie .. "/abilityIcons",
+		passive = paths.mewgenie .. "/passiveIcons",
+		collars = paths.mewgenie .. "/collarIcons",
+		fontIcons = paths.mewgenie .. "/fontIcons",
+		shells = paths.mewgenie .. "/shells",
+		fonts = paths.mewgenie .. "/fonts",
 	},
 	swf = {
 		ability = "./mewgenics-data/swfs/ability_icons.swf",
@@ -46,9 +46,9 @@ paths.assets = {
 }
 paths.data = {
 	json = {
-		folder = paths.mewbox .. "",
-		passives = paths.mewbox .. "/passives.json",
-		abilities = paths.mewbox .. "/abilities.json",
+		folder = paths.mewgenie .. "",
+		passives = paths.mewgenie .. "/passives.json",
+		abilities = paths.mewgenie .. "/abilities.json",
 	},
 	csv = {
 		"./mewgenics-data/data/text/abilities.csv",
@@ -130,7 +130,7 @@ paths.data = {
 
 
 for key, id in pairs(ids.fontIcons) do
-	local path = paths.mewbox .. "/DefineSprite_" .. id .. "_FontIcon_" .. key
+	local path = paths.mewgenie .. "/DefineSprite_" .. id .. "_FontIcon_" .. key
 	if key == "divineshield" or key == "shield" then
 		path = path:gsub("FontIcon", "RawFontIcon")
 	end

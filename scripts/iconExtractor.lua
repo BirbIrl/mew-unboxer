@@ -25,7 +25,7 @@ end
 local function extractData(dataPath, typeId)
 	assert(sh.stat(dataPath) == "file", dataPath .. " not found")
 	os.execute("ffdec -selectid " ..
-		typeId .. " -format sprite:svg -importAssets yes -export sprite " .. paths.mewbox .. " " ..
+		typeId .. " -format sprite:svg -importAssets yes -export sprite " .. paths.mewgenie .. " " ..
 		dataPath)
 end
 
