@@ -84,7 +84,7 @@ mewgenie.collars = {
 	Hunter = "Hunter",
 	Mage = "Mage",
 	Tank = "Tank",
-	Healer = "Cleric",
+	Medic = "Cleric",
 	Thief = "Thief",
 	Necromancer = "Necromancer",
 	Tinkerer = "Tinkerer",
@@ -131,7 +131,7 @@ mewgenie.blacklist = {
 }
 
 mewgenie.collarOrder = {
-	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Healer", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid",
+	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Medic", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid",
 	"Psychic", "Monk", "Jester", "Disorder"
 }
 
