@@ -81,6 +81,7 @@ local mewgenie = {}
 
 
 mewgenie.stats = {
+	str = "Strength",
 	dex = "Dexterity",
 	con = "Constitution",
 	int = "Intelligence",
