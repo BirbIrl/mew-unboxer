@@ -77,24 +77,7 @@ fontExtractor.extractFonts()
 
 local mewgenie = {}
 
---@enum mewgenie.
-mewgenie.collars = {
-	Colorless = "Collarless",
-	Fighter = "Fighter",
-	Hunter = "Hunter",
-	Mage = "Mage",
-	Tank = "Tank",
-	Medic = "Cleric",
-	Thief = "Thief",
-	Necromancer = "Necromancer",
-	Tinkerer = "Tinkerer",
-	Butcher = "Butcher",
-	Druid = "Druid",
-	Psychic = "Psychic",
-	Monk = "Monk",
-	Jester = "Jester",
-	Disorder = "Disorder",
-}
+
 
 
 mewgenie.stats = {
@@ -134,6 +117,16 @@ mewgenie.collarOrder = {
 	"Colorless", "Fighter", "Hunter", "Mage", "Tank", "Medic", "Thief", "Necromancer", "Tinkerer", "Butcher", "Druid",
 	"Psychic", "Monk", "Jester", "Disorder"
 }
+
+--TODO: move collars out of here, and define themn in their own file with more info
+mewgenie.collars = {}
+for _, nameId in ipairs(mewgenie.collarOrder) do
+	local collarInfo = {}
+	mewgenie.collars[nameId] = collarInfo
+	collarInfo.name = text["CAT_CLASS_" .. nameId:upper() .. "_NAME"]
+	collarInfo.desc = text["CAT_CLASS_" .. nameId:upper() .. "_DESC"]
+end
+
 
 sh.write(paths.mewgenie .. "/mewgenie.json", json.encode(mewgenie))
 
